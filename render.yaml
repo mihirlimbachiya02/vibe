@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: vibe-api
+    runtime: node
+    rootDir: server
+    buildCommand: npm ci
+    startCommand: npm start
+    healthCheckPath: /health/live
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NODE_VERSION
+        value: "22"
+      - key: MONGO_URI
+        sync: false
+      - key: CLIENT_ORIGINS
+        sync: false
+      - key: API_RATE_LIMIT_MAX
+        value: "120"
+      - key: RECOMMENDATION_RATE_LIMIT_MAX
+        value: "40"
